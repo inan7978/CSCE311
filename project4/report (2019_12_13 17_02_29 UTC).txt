@@ -1,0 +1,46 @@
+1.	What is /proc in Linux/Unix? What does (cat /proc/$pid/maps) output, and how does it relate to project 3? Enumerate 3 other functions that you like most.
+
+The proc directory is a filesystem that contains an illusionary filesystem. It exists in memory, not the disk and is remade every time the machine is power cycled. It is used to provide information about the system but originally provided information about processes. This explains the name. Entering "cat maps" describes a region of contiguous virtual memory in a process or thread. This shows the address, permissions, offset, device, pathname, and inode. It relates to project three because we had to pretty much access this to get the information we needed for the project... mainly the permissions part. As far as the three functions I enjoy. I would say meminfo, for showing me that half of my memory is inactive, and for showing me how little RAM ubuntu uses. uptime for showing me how much time i spent doing the project. My favorite is kcore. This is because it denies me the right run cat command on it even though i am in sudo -s mode. This is really cool if i'm honest.
+
+
+2.	What is a loadable kernel module?
+
+A loadable kernel module is an object file that contains code to extend the running kernel (base kernel) of an operating system. These are typically used to add support for new hardware. This allows the OS to save memory space. On the downside this causes fragmentation.
+
+
+3.	Compare the three sets of APIs for I/O used in the first sub-project. Compare file descriptor, File pointer, file descriptor structure, and open file description
+
+open(), read(), write()...
+* Unbuffered and not as easy to use
+* Tend to be slower
+* Are system calls
+
+fopen(), fread(), fwrite()...
+* Buffered
+* Easier to use
+* part of a library
+* Usually faster than non "f" family
+
+MMF I/O
+* Usually the fastest for larger files
+* Smaller file uses will waste memory
+* The least amount of code (half the size for me)
+* Can be shared between multiple procese
+
+File Descriptor:
+Literally an ID used by the kernel to keep track of files.
+Each file has a different ID when it is opened, even if it is the same file opened twice.
+I have made an attempt to replicate this in the first part of the project with open().
+
+File Pointer:
+A pointer that points to a structure which has information about that file contained within it.
+Similar to a file descriptor, only the file descriptor uses an integer value, versus a pointer.
+(Yes, the pointer is technically an integer but you get what I mean)
+
+File descriptor structure:
+A table of open file descriptors that is managed by the kernel.
+
+Open file description:
+Contains information about the way a file is open, including mode, the position in the file, etc.
+Under linux the open file descriptor structure is struct file.
+

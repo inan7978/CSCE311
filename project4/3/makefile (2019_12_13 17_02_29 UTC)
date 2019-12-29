@@ -1,0 +1,6 @@
+compile:
+	gcc main.c -o sub1
+	./sub1
+
+clean:
+	rm sub1

@@ -1,0 +1,6 @@
+Inan Ismailov
+
+
+Video's of each working is located in each directory!
+
+To use the code simply go into the directory of choice. They are numbered according to the description of sub-project 1. Each directory contains a copy of the provided text file. Once inside a directory, open it in terminal, type "make", and press enter. The included copy of the provided text file will be modified according to rubric requirements. This will also be stated in the terminal when the process completes, along with a description of the methods used. Keep in mind that the original file itself will be modified, so running the program an even number of times will make no difference. This is not a design flaw, just basic logic.
